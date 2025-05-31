@@ -6,6 +6,7 @@
   "background": {
     "service_worker": "background.bundle.js"
   },
+  "key": "miipddlbjbggckgcalofglocfdlndmhn",
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-34.png"

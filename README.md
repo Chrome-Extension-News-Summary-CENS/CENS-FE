@@ -15,7 +15,8 @@
 - docs : 문서(주석) 수정
 - style : 코드 스타일, 포맷팅에 대한 수정
 - refactor : 기능의 변화가 아닌 코드 리팩터링 ex) 변수 이름 변경
-- release : 버전 릴리즈 merge : 병합
+- release : 버전 릴리즈 
+- merge : 병합
 
 ## Announcements
 

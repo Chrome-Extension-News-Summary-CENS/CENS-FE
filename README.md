@@ -6,7 +6,7 @@
 [![npm-download](https://img.shields.io/npm/dw/chrome-extension-boilerplate-react)](https://www.npmjs.com/package/chrome-extension-boilerplate-react)
 [![npm](https://img.shields.io/npm/dm/chrome-extension-boilerplate-react)](https://www.npmjs.com/package/chrome-extension-boilerplate-react)
 
-## Git Manage
+## Commit Manage
 
 - feat : 새로운 기능 추가, 기존의 기능을 요구 사항에 맞추어 수정
 - fix : 기능에 대한 버그 수정

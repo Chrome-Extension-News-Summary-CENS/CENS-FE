@@ -1,0 +1,16 @@
+.settings-content {
+  padding: 20px;
+}
+
+.category-settings {
+  margin-bottom: 30px;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

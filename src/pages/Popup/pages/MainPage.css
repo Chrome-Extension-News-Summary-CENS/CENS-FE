@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.news-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.news-item {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  cursor: pointer;
+}
+
+.news-item:hover {
+  background-color: #f8fafc;
+}
+
+.news-item h3 {
+  margin: 0 0 8px 0;
+  color: #2d3748;
+}
+
+.news-item p {
+  margin: 0;
+  color: #718096;
+  font-size: 14px;
+}

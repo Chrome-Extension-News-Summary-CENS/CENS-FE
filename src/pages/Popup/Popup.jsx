@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import DetailPage from './pages/DetailPage';
 import SettingsPage from './pages/SettingsPage';
+import CategoryEditPage from './pages/CategoryEditPage';
 
 const Popup = () => {
   const [currentPage, setCurrentPage] = useState('login');
@@ -26,6 +27,8 @@ const Popup = () => {
         return <DetailPage onPageChange={handlePageChange} newsId={selectedNewsId} />;
       case 'settings':
         return <SettingsPage onPageChange={handlePageChange} />;
+      case 'categoryEdit':
+        return <CategoryEditPage onPageChange={handlePageChange} />;
       default:
         return <LoginPage onPageChange={handlePageChange} />;
     }

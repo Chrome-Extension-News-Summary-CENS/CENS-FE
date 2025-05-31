@@ -18,10 +18,8 @@ const SettingsPage = ({ onPageChange }) => {
   };
 
   const handleCategoryClick = () => {
-    alert('카테고리 설정 화면은 아직 준비되지 않았습니다.');
-    onPageChange('settings');
+    onPageChange('categoryEdit');
   };
-
 
   // “개발자 정보”를 누르면, 예를 들어 새 창을 열거나 간단한 얼럿을 띄우는 형태:
   const handleDeveloperClick = () => {

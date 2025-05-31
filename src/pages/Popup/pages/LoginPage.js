@@ -62,7 +62,7 @@ const LoginPage = ({ onPageChange }) => {
         Get the latest news, summarized for you. Stay informed without the
         information overload.
       </p>
-      <button className="logout-button" onClick={() => onPageChange('login')}>
+      <button className="logout-button" onClick={() => onPageChange('main')}>
         Sign in with Google
       </button>
     </div>

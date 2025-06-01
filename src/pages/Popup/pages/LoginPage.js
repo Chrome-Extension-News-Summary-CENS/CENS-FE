@@ -7,8 +7,9 @@ const LoginPage = ({ onPageChange }) => {
     const redirectUrl = chrome.identity.getRedirectURL(); // 자동으로 https://<EXT_ID>.chromiumapp.org 반환
     console.log('Redirect URL:', redirectUrl);
 
-    const authUrl = `https://api.cens.kro.kr:8080/oauth2/authorization/google`; // 실제 배포용
+    const authUrl = `http://api.cens.kro.kr:8080/oauth2/authorization/google`; // 실제 배포용
     // const authUrl = `http://localhost:8080/oauth2/authorization/google`; // 로컬 테스트용
+    console.log('Auth URL:', authUrl);
 
     chrome.identity.launchWebAuthFlow(
       {
@@ -52,7 +53,6 @@ const LoginPage = ({ onPageChange }) => {
   };
 
 
-
   return (
     <div className="page login-page">
       <div className="logo">
@@ -62,7 +62,10 @@ const LoginPage = ({ onPageChange }) => {
         Get the latest news, summarized for you. Stay informed without the
         information overload.
       </p>
-      <button className="logout-button" onClick={() => onPageChange('main')}>
+      <button className="logout-button"
+        // onClick={() => onPageChange('main')}
+              onClick={handleGoogleLogin}
+      >
         Sign in with Google
       </button>
     </div>

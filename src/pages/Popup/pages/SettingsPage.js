@@ -5,11 +5,14 @@ import './SettingsPage.css';
 const SettingsPage = ({ onPageChange }) => {
   const handleLogout = () => {
     // 로컬스토리지 토큰 삭제
-    localStorage.removeItem('authToken');
+    // localStorage.removeItem('authToken');
     // 크롬 익스텐션 백그라운드에 메시지 보내기
     // chrome.runtime.sendMessage({ action: 'LOGOUT' });
     // onPageChange로 로그인 화면 이동 요청
-    onPageChange('login');
+    chrome.storage.local.remove(['accessToken', 'refreshToken'], () => {
+      console.log('로그아웃: 토큰 삭제 완료');
+      onPageChange('login');
+    });
   };
 
   const handleVersion = () => {

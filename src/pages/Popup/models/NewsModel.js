@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwtAxios from '../utils/jwtUtil';
 
 class NewsModel {
   constructor() {
@@ -11,8 +12,9 @@ class NewsModel {
     try {
       this.loading = true;
       // TODO: 실제 API 엔드포인트로 변경
-      const response = await axios.get(
+      const response = await jwtAxios.get(
         'http://api.cens.kro.kr:8080/api/article'
+      // 'http://localhost:8080/api/article'
       );
       this.news = response.data;
       this.error = null;

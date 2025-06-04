@@ -1,11 +1,68 @@
-.news-detail {
+/* ─── DetailPage 전용 CSS ─── */
+
+/* 최상위 페이지 레이아웃 */
+.dp-page {
+  width: 100%;
+  max-width: 360px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  /* 페이지 배경을 연한 회색으로 약간 구분 (원하는 경우) */
+  height: 100vh;
+}
+
+/* 뉴스를 찾지 못했을 때 텍스트 */
+.dp-not-found {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* ===== Header ===== */
+.dp-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.dp-back-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #4a5568;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.dp-back-button:hover {
+  color: #2d3748;
+}
+
+.dp-header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d3748;
+  margin: 0;
+}
+
+/* ===== News Detail Container ===== */
+.dp-news-detail {
   padding: 20px;
-  background: white;
+  background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.news-category {
+/* 뉴스 카테고리 태그 */
+.dp-news-category {
   display: inline-block;
   background: #e9ecef;
   color: #495057;
@@ -15,7 +72,8 @@
   margin-bottom: 16px;
 }
 
-.news-title {
+/* 뉴스 제목 */
+.dp-news-title {
   font-size: 20px;
   font-weight: 600;
   color: #212529;
@@ -23,21 +81,25 @@
   line-height: 1.4;
 }
 
-.news-date {
+/* 뉴스 날짜 */
+.dp-news-date {
   font-size: 14px;
   color: #868e96;
   margin-bottom: 16px;
 }
 
-.news-content {
+/* 뉴스 본문 콘텐츠 */
+.dp-news-content {
   font-size: 16px;
   color: #495057;
   line-height: 1.6;
   margin-bottom: 24px;
   white-space: pre-wrap;
+  /* 줄바꿈 유지 */
 }
 
-.original-link {
+/* 원문 보기 링크 버튼 */
+.dp-original-link {
   display: inline-block;
   background: #228be6;
   color: white;
@@ -48,6 +110,6 @@
   transition: background-color 0.2s;
 }
 
-.original-link:hover {
+.dp-original-link:hover {
   background: #1c7ed6;
 }

@@ -1,3 +1,4 @@
+/* ─── Reset 및 기본 세팅 ─── */
 *,
 *::before,
 *::after {
@@ -10,24 +11,194 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* 가로로 넘치는 부분은 숨깁니다 */
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
 }
 
-.header {
+/* ─── .page 컨테이너 ─── */
+.page {
+  width: 100%;
+  max-width: 360px;
+  height: 100%;
+  padding: 8px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
+/* ─── 로딩/에러 텍스트 ─── */
+.loading-text,
+.error-text {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* ===== Header ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+  /* 언더라인과 부제목 사이 여백 */
+}
+
+/* 왼쪽 로고 버튼 */
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-right: 8px;
+}
+
+.menu-button:hover .menu-icon {
+  opacity: 0.8;
+}
+
+/* 로고 SVG 이미지 */
+.menu-icon {
+  width: 24px;
+  /* 로고 크기 조절 */
+  height: 24px;
+}
+
+/* 중앙 타이틀 */
+.header-title {
+  flex: 1;
+  /* 남은 공간을 차지해 중앙 정렬을 돕는다 */
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d3748;
+  margin: 0;
+}
+
+/* 오른쪽 버튼 그룹(검색 + 설정) */
+.header-right-group {
+  display: flex;
+  align-items: center;
+}
+
+/* 검색 버튼 */
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-right: 8px;
+}
+
+.search-button:hover .search-icon {
+  opacity: 0.8;
+}
+
+/* 검색 아이콘 이미지 */
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 설정(톱니바퀴) 버튼 */
+.settings-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  /* 톱니바퀴 아이콘 크기(Unicode '⚙') */
+  color: #2d3748;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.settings-button:hover {
+  color: #007bff;
+}
+
+/* ===== "Today's Summaries" 부제목 ===== */
+.subtitle {
+  font-size: 20px;
+  margin: 8px 0 12px 0;
+  color: #2d3748;
+  padding-left: 4px;
+}
+
+/* ===== Category List ===== */
+.category-list {
+  display: flex;
+  flex: 0 0 auto;
+  overflow-x: auto;
+  /* 탭이 많아지면 가로 스크롤 */
+  margin-bottom: 12px;
+  gap: 24px;
+  /* 탭 사이 간격 조정 (원하는 만큼 늘리거나 줄이세요) */
+  padding: 0 4px;
+  /* 좌우 여백 */
+  border-bottom: 1px solid #e2e8f0;
+  /* 탭 전체 아래쪽 연한 구분선 */
+}
+
+/* 기본 탭 버튼 스타일 (비활성 상태) */
+.category-item {
+  flex: 0 0 auto;
+  background: none;
+  /* 배경 없음 */
+  border: none;
+  /* 테두리 없음 */
+  padding: 8px 0;
+  /* 위아래 여백만 주고, 좌우 패딩은 텍스트 길이에 따름 */
+  font-size: 14px;
+  /* 텍스트 크기 */
+  color: #4a5568;
+  /* 중간 톤 회색 */
+  font-weight: 500;
+  white-space: nowrap;
+  /* 줄 바꿈 금지 */
+  cursor: pointer;
+  position: relative;
+  /* ::after 언더라인용 */
+  transition: color 0.2s ease;
+}
+
+.category-item:hover {
+  color: #2d3748;
+  /* 마우스 오버 시 텍스트 진한 회색 → 시각적 피드백 */
+}
+
+/* 활성화된(Active) 탭 */
+.category-item.active {
+  color: #007bff;
+  /* 진한 파란색 텍스트 */
+}
+
+/* 활성 탭 언더라인 (border-bottom) */
+.category-item.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  /* 탭 텍스트 바로 아래, category-list의 하단 구분선과 겹치지 않도록 -1px */
+  height: 2px;
+  background-color: #007bff;
+  /* 파란색 언더라인 */
+  border-radius: 1px;
+  /* 언더라인 끝을 약간 둥글게 */
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+
+
+/* ===== News List ===== */
 .news-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px;
+  padding: 0 16px;
   overflow-y: auto;
-  max-height: calc(100vh - 60px);
+  max-height: calc(100vh - 120px);
 }
 
 .news-item {
@@ -54,78 +225,6 @@ body {
   font-size: 14px;
 }
 
-/* MainPage.css */
-
-.page {
-  width: 100%;
-  max-width: 360px;
-  height: 100%;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-/* ===== Header ===== */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.logo {
-  font-size: 18px;
-  font-weight: bold;
-  color: #2d3748;
-}
-
-.settings-button {
-  background: none;
-  border: none;
-  color: #007bff;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.settings-button:hover {
-  text-decoration: underline;
-}
-
-/* ===== Category List ===== */
-.category-list {
-  display: flex;
-  flex: 0 0 auto;
-  overflow-x: auto;
-  margin-bottom: 8px;
-  gap: 3px;
-  padding: 4px 0;
-}
-
-.category-item {
-  flex: 0 0 auto; /* flex-grow:0, flex-shrink:0, flex-basis:auto */
-  padding: 4px 10px; /* 패딩 줄임 */
-  border: 1px solid #ddd;
-  border-radius: 16px; /* 반경도 살짝 줄임 */
-  background-color: #f5f5f5;
-  font-size: 12px; /* 글자 크기 축소 */
-  color: #2d3748;
-  white-space: nowrap; /* 줄 바꿈 금지 */
-  cursor: pointer;
-}
-
-.category-item:hover {
-  background-color: #e0e0e0;
-}
-
-.category-item.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-/* ===== News List ===== */
 .news-category {
   display: inline-block;
   background: #e9ecef;

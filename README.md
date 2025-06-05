@@ -10,127 +10,9 @@ CENS Chrome Extension은 사용자 맞춤형 뉴스 추천 서비스를 제공�
 - ⚙️ 사용자 설정 관리
 - 🔔 실시간 뉴스 알림
 
-## 시스템 아키텍처 (C4 모델)
+## System Architecture
 
-### Context (시스템 컨텍스트)
-
-```
-[Chrome Extension System]
-    ├── [Popup Application]
-    │   ├── News Module
-    │   ├── Auth Module
-    │   └── Settings Module
-    ├── [Background Service]
-    │   └── OAuth2 Authentication
-    └── [Content Script]
-        └── Page Interaction
-```
-
-### Container (컨테이너)
-
-- **Popup Application**
-
-  - React 기반의 사용자 인터페이스
-  - MVC 패턴으로 구현된 뉴스 관리 시스템
-  - 사용자 인증 및 설정 관리
-
-- **Background Service**
-
-  - OAuth2 인증 처리
-  - 메시지 브로커링
-  - 상태 관리
-
-- **Content Script**
-  - 웹 페이지와의 상호작용
-  - DOM 조작
-
-### Component (컴포넌트)
-
-```
-[News Module]
-    ├── Model (NewsModel)
-    │   ├── 데이터 구조 정의
-    │   ├── API 통신
-    │   └── 비즈니스 로직
-    ├── Controller (NewsController)
-    │   ├── 사용자 액션 처리
-    │   ├── 데이터 흐름 제어
-    │   └── 상태 관리
-    └── View (Pages)
-        ├── LoginPage
-        ├── MainPage
-        ├── DetailPage
-        └── SettingsPage
-```
-
-## MVC 패턴 구현
-
-### Model 계층
-
-- **NewsModel**
-  - 뉴스 데이터 구조 정의
-  - API 통신 로직
-  - 데이터 조작 메서드
-
-### Controller 계층
-
-- **NewsController**
-  - Model과 View 사이의 중재자
-  - 사용자 액션 처리
-  - 데이터 흐름 제어
-
-### View 계층
-
-- **Pages**
-  - 사용자 인터페이스 구현
-  - 사용자 입력 처리
-  - 데이터 표시
-
-## 데이터 흐름
-
-```
-[User Action] → [View] → [Controller] → [Model] → [API]
-     ↑            ↑          ↑            ↑
-     └────────────┴──────────┴────────────┘
-```
-
-## 주요 컴포넌트 설명
-
-### NewsModule
-
-- 뉴스 데이터 관리
-- 카테고리별 필터링
-- 상세 뉴스 조회
-
-### AuthModule
-
-- Google OAuth2 인증
-- 토큰 관리
-- 세션 관리
-
-### SettingsModule
-
-- 사용자 설정 관리
-- 카테고리 관리
-- 알림 설정
-
-## 기술 스택
-
-- **Frontend**
-
-  - React
-  - CSS Modules
-  - Webpack
-
-- **Backend Communication**
-
-  - Axios
-  - JWT
-
-- **Chrome Extension API**
-  - chrome.identity
-  - chrome.storage
-  - chrome.runtime
+프로젝트의 시스템 아키텍처와 MVC 패턴 구현에 대한 자세한 내용은 [ARCHITECTURE.md](ARCHITECTURE.md) 문서를 참조해주세요.
 
 ## 설치 방법
 
@@ -150,6 +32,14 @@ CENS Chrome Extension은 사용자 맞춤형 뉴스 추천 서비스를 제공�
    # 개발 서버 실행
    npm start
    ```
+
+## 기술 스택
+
+- React
+- Chrome Extension API
+- OAuth2
+- JWT
+- Axios
 
 ## 개발 환경 설정
 
@@ -242,8 +132,11 @@ src/
 
 이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
-## 연락처
+## developers
 
-- 프로젝트 관리자: [이름]
-- 이메일: [이메일 주소]
-- 프로젝트 링크: [GitHub 저장소 링크]
+- frontend: [corkang](https://github.com/corkang), [Park MinJun](https://github.com/ParkMinjun0721)
+- backend: [suminJN](https://github.com/SuminJN)
+
+## Project Link
+
+- [github](https://github.com/Chrome-Extension-News-Summary-CENS/CENS-FE)

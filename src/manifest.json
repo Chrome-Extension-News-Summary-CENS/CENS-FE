@@ -2,7 +2,6 @@
   "manifest_version": 3,
   "name": "CENS; chrome-extension-news-summary",
   "description": "A chrome extension delivers you news summary everyday!",
-  "options_page": "options.html",
   "background": {
     "service_worker": "background.bundle.js"
   },

@@ -1,12 +1,232 @@
-<img src="src/assets/img/icon-128.png" width="64"/>
+# CENS Chrome Extension
 
-# Chrome Extension (MV3) Boilerplate with React 18 and Webpack 5
+CENS Chrome Extension은 사용자 맞춤형 뉴스 추천 서비스를 제공하는 크롬 확장 프로그램입니다.
 
-[![npm](https://img.shields.io/npm/v/chrome-extension-boilerplate-react)](https://www.npmjs.com/package/chrome-extension-boilerplate-react)
-[![npm-download](https://img.shields.io/npm/dw/chrome-extension-boilerplate-react)](https://www.npmjs.com/package/chrome-extension-boilerplate-react)
-[![npm](https://img.shields.io/npm/dm/chrome-extension-boilerplate-react)](https://www.npmjs.com/package/chrome-extension-boilerplate-react)
+## 주요 기능
 
-## Commit Manage
+- 🔐 Google 계정을 통한 간편 로그인
+- 📰 카테고리별 맞춤형 뉴스 추천
+- 🎯 사용자 관심사 기반 뉴스 필터링
+- ⚙️ 사용자 설정 관리
+- 🔔 실시간 뉴스 알림
+
+## 시스템 아키텍처 (C4 모델)
+
+### Context (시스템 컨텍스트)
+
+```
+[Chrome Extension System]
+    ├── [Popup Application]
+    │   ├── News Module
+    │   ├── Auth Module
+    │   └── Settings Module
+    ├── [Background Service]
+    │   └── OAuth2 Authentication
+    └── [Content Script]
+        └── Page Interaction
+```
+
+### Container (컨테이너)
+
+- **Popup Application**
+
+  - React 기반의 사용자 인터페이스
+  - MVC 패턴으로 구현된 뉴스 관리 시스템
+  - 사용자 인증 및 설정 관리
+
+- **Background Service**
+
+  - OAuth2 인증 처리
+  - 메시지 브로커링
+  - 상태 관리
+
+- **Content Script**
+  - 웹 페이지와의 상호작용
+  - DOM 조작
+
+### Component (컴포넌트)
+
+```
+[News Module]
+    ├── Model (NewsModel)
+    │   ├── 데이터 구조 정의
+    │   ├── API 통신
+    │   └── 비즈니스 로직
+    ├── Controller (NewsController)
+    │   ├── 사용자 액션 처리
+    │   ├── 데이터 흐름 제어
+    │   └── 상태 관리
+    └── View (Pages)
+        ├── LoginPage
+        ├── MainPage
+        ├── DetailPage
+        └── SettingsPage
+```
+
+## MVC 패턴 구현
+
+### Model 계층
+
+- **NewsModel**
+  - 뉴스 데이터 구조 정의
+  - API 통신 로직
+  - 데이터 조작 메서드
+
+### Controller 계층
+
+- **NewsController**
+  - Model과 View 사이의 중재자
+  - 사용자 액션 처리
+  - 데이터 흐름 제어
+
+### View 계층
+
+- **Pages**
+  - 사용자 인터페이스 구현
+  - 사용자 입력 처리
+  - 데이터 표시
+
+## 데이터 흐름
+
+```
+[User Action] → [View] → [Controller] → [Model] → [API]
+     ↑            ↑          ↑            ↑
+     └────────────┴──────────┴────────────┘
+```
+
+## 주요 컴포넌트 설명
+
+### NewsModule
+
+- 뉴스 데이터 관리
+- 카테고리별 필터링
+- 상세 뉴스 조회
+
+### AuthModule
+
+- Google OAuth2 인증
+- 토큰 관리
+- 세션 관리
+
+### SettingsModule
+
+- 사용자 설정 관리
+- 카테고리 관리
+- 알림 설정
+
+## 기술 스택
+
+- **Frontend**
+
+  - React
+  - CSS Modules
+  - Webpack
+
+- **Backend Communication**
+
+  - Axios
+  - JWT
+
+- **Chrome Extension API**
+  - chrome.identity
+  - chrome.storage
+  - chrome.runtime
+
+## 설치 방법
+
+1. Chrome 웹 스토어에서 설치
+
+   - [Chrome 웹 스토어 링크](https://chrome.google.com/webstore)
+
+2. 개발자 모드로 설치
+
+   ```bash
+   # 저장소 클론
+   git clone [repository-url]
+
+   # 의존성 설치
+   npm install
+
+   # 개발 서버 실행
+   npm start
+   ```
+
+## 개발 환경 설정
+
+1. Node.js 설치 (v14 이상)
+2. 프로젝트 클론
+3. 의존성 설치
+   ```bash
+   npm install
+   ```
+4. 개발 서버 실행
+   ```bash
+   npm start
+   ```
+
+## 빌드 방법
+
+```bash
+# 프로덕션 빌드
+npm run build
+
+# 개발 빌드
+npm run build:dev
+```
+
+## 프로젝트 구조
+
+```
+src/
+├── pages/
+│   ├── Popup/
+│   │   ├── pages/
+│   │   │   ├── LoginPage
+│   │   │   ├── MainPage
+│   │   │   ├── DetailPage
+│   │   │   └── SettingsPage
+│   │   └── Popup.jsx
+│   ├── Background/
+│   │   └── background.js
+│   └── ContentScript/
+│       └── contentScript.js
+├── models/
+│   └── NewsModel.js
+└── controllers/
+    └── NewsController.js
+```
+
+## 사용 방법
+
+1. Chrome 브라우저에서 확장 프로그램 설치
+2. Google 계정으로 로그인
+3. 관심 있는 뉴스 카테고리 선택
+4. 메인 페이지에서 추천 뉴스 확인
+5. 설정 페이지에서 개인화 옵션 관리
+
+## 보안 고려사항
+
+- OAuth2 인증 사용
+- 토큰 기반 인증
+- HTTPS 통신
+- XSS 방지
+
+## 확장성 고려사항
+
+- 모듈화된 구조
+- 컴포넌트 재사용
+- 의존성 주입
+- 테스트 용이성
+
+## 기여 방법
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Commit Message Convention
 
 - feat : 새로운 기능 추가, 기존의 기능을 요구 사항에 맞추어 수정
 - fix : 기능에 대한 버그 수정
@@ -15,148 +235,15 @@
 - docs : 문서(주석) 수정
 - style : 코드 스타일, 포맷팅에 대한 수정
 - refactor : 기능의 변화가 아닌 코드 리팩터링 ex) 변수 이름 변경
-- release : 버전 릴리즈 
+- release : 버전 릴리즈
 - merge : 병합
 
-## Announcements
+## 라이선스
 
-- Recently updated from **[React](https://reactjs.org)** ~~17~~ to **18**!
-- **_This boilerplate adopts [Manifest V3](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-overview/)!_**
-  - For V2 users, please check out the [manifest-v2](https://github.com/lxieyang/chrome-extension-boilerplate-react/tree/manifest-v2) branch, or use version [3.x](https://www.npmjs.com/package/chrome-extension-boilerplate-react/v/3.3.0).
-  - Check out the [Manifest V3 Migration Guide](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/).
-- Recently added [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/) Support! Thanks [GeekaholicLin](https://github.com/lxieyang/chrome-extension-boilerplate-react/issues/17)!
-- Recently updated from **[Webpack Dev Server](https://webpack.js.org/configuration/dev-server/)** ~~3.x~~ to **4.x** and **[Webpack](https://webpack.js.org/)** ~~4~~ to **5**!
-- Recently added [TypeScript](https://www.typescriptlang.org/) Support!
+이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
-## Features
+## 연락처
 
-This is a basic Chrome Extensions boilerplate to help you write modular and modern Javascript code, load CSS easily and [automatic reload the browser on code changes](https://webpack.github.io/docs/webpack-dev-server.html#automatic-refresh).
-
-This boilerplate is updated with:
-
-- [Chrome Extension Manifest V3](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-overview/)
-- [React 18](https://reactjs.org)
-- [Webpack 5](https://webpack.js.org/)
-- [Webpack Dev Server 4](https://webpack.js.org/configuration/dev-server/)
-- [React Refresh](https://www.npmjs.com/package/react-refresh)
-- [react-refresh-webpack-plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin)
-- [eslint-config-react-app](https://www.npmjs.com/package/eslint-config-react-app)
-- [Prettier](https://prettier.io/)
-- [TypeScript](https://www.typescriptlang.org/)
-
-This boilerplate is heavily inspired by and adapted from [https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate), with additional support for React 18 features, Webpack 5, and Webpack Dev Server 4.
-
-Please open up an issue to nudge me to keep the npm packages up-to-date. FYI, it takes time to make different packages with different versions work together nicely.
-
-## Installing and Running
-
-### Procedures:
-
-1. Check if your [Node.js](https://nodejs.org/) version is >= **18**.
-2. Clone this repository.
-3. Change the package's `name`, `description`, and `repository` fields in `package.json`.
-4. Change the name of your extension on `src/manifest.json`.
-5. Run `npm install` to install the dependencies.
-6. Run `npm start`
-7. Load your extension on Chrome following:
-   1. Access `chrome://extensions/`
-   2. Check `Developer mode`
-   3. Click on `Load unpacked extension`
-   4. Select the `build` folder.
-8. Happy hacking.
-
-## Structure
-
-All your extension's code must be placed in the `src` folder.
-
-The boilerplate is already prepared to have a popup, an options page, a background page, and a new tab page (which replaces the new tab page of your browser). But feel free to customize these.
-
-## TypeScript
-
-This boilerplate now supports TypeScript! The `Options` Page is implemented using TypeScript. Please refer to `src/pages/Options/` for example usages.
-
-## Webpack auto-reload and HRM
-
-To make your workflow much more efficient this boilerplate uses the [webpack server](https://webpack.github.io/docs/webpack-dev-server.html) to development (started with `npm start`) with auto reload feature that reloads the browser automatically every time that you save some file in your editor.
-
-You can run the dev mode on other port if you want. Just specify the env var `port` like this:
-
-```
-$ PORT=6002 npm run start
-```
-
-## Content Scripts
-
-Although this boilerplate uses the webpack dev server, it's also prepared to write all your bundles files on the disk at every code change, so you can point, on your extension manifest, to your bundles that you want to use as [content scripts](https://developer.chrome.com/extensions/content_scripts), but you need to exclude these entry points from hot reloading [(why?)](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate/issues/4#issuecomment-261788690). To do so you need to expose which entry points are content scripts on the `webpack.config.js` using the `chromeExtensionBoilerplate -> notHotReload` config. Look the example below.
-
-Let's say that you want use the `myContentScript` entry point as content script, so on your `webpack.config.js` you will configure the entry point and exclude it from hot reloading, like this:
-
-```js
-{
-  …
-  entry: {
-    myContentScript: "./src/js/myContentScript.js"
-  },
-  chromeExtensionBoilerplate: {
-    notHotReload: ["myContentScript"]
-  }
-  …
-}
-```
-
-and on your `src/manifest.json`:
-
-```json
-{
-  "content_scripts": [
-    {
-      "matches": ["https://www.google.com/*"],
-      "js": ["myContentScript.bundle.js"]
-    }
-  ]
-}
-```
-
-## Intelligent Code Completion
-
-Thanks to [@hudidit](https://github.com/lxieyang/chrome-extension-boilerplate-react/issues/4)'s kind suggestions, this boilerplate supports chrome-specific intelligent code completion using [@types/chrome](https://www.npmjs.com/package/@types/chrome).
-
-## Packing
-
-After the development of your extension run the command
-
-```
-$ NODE_ENV=production npm run build
-```
-
-Now, the content of `build` folder will be the extension ready to be submitted to the Chrome Web Store. Just take a look at the [official guide](https://developer.chrome.com/webstore/publish) to more infos about publishing.
-
-## Secrets
-
-If you are developing an extension that talks with some API you probably are using different keys for testing and production. Is a good practice you not commit your secret keys and expose to anyone that have access to the repository.
-
-To this task this boilerplate import the file `./secrets.<THE-NODE_ENV>.js` on your modules through the module named as `secrets`, so you can do things like this:
-
-_./secrets.development.js_
-
-```js
-export default { key: '123' };
-```
-
-_./src/popup.js_
-
-```js
-import secrets from 'secrets';
-ApiCall({ key: secrets.key });
-```
-
-:point_right: The files with name `secrets.*.js` already are ignored on the repository.
-
-## Resources:
-
-- [Webpack documentation](https://webpack.js.org/concepts/)
-- [Chrome Extension documentation](https://developer.chrome.com/extensions/getstarted)
-
----
-
-Michael Xieyang Liu | [Website](https://lxieyang.github.io)
+- 프로젝트 관리자: [이름]
+- 이메일: [이메일 주소]
+- 프로젝트 링크: [GitHub 저장소 링크]

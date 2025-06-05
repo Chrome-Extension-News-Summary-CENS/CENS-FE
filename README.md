@@ -1,14 +1,13 @@
 # CENS Chrome Extension
 
-CENS Chrome Extension은 사용자 맞춤형 뉴스 추천 서비스를 제공하는 크롬 확장 프로그램입니다.
+CENS: Chrome Extension News Summary 는 사용자가 설정한 카테고리의 뉴스를 GPT를 이용해 요약, 제공하는 크롬 확장 프로그램입니다.
 
 ## 주요 기능
 
 - 🔐 Google 계정을 통한 간편 로그인
 - 📰 카테고리별 맞춤형 뉴스 추천
-- 🎯 사용자 관심사 기반 뉴스 필터링
+- 📜 GPT를 이용해 요약된 뉴스
 - ⚙️ 사용자 설정 관리
-- 🔔 실시간 뉴스 알림
 
 ## System Architecture
 
@@ -16,15 +15,13 @@ CENS Chrome Extension은 사용자 맞춤형 뉴스 추천 서비스를 제공�
 
 ## 설치 방법
 
-1. Chrome 웹 스토어에서 설치
-
-   - [Chrome 웹 스토어 링크](https://chrome.google.com/webstore)
+1. Chrome 웹 스토어에서 설치 (TBU)
 
 2. 개발자 모드로 설치
 
    ```bash
    # 저장소 클론
-   git clone [repository-url]
+   git clone [https://github.com/Chrome-Extension-News-Summary-CENS/CENS-FE]
 
    # 의존성 설치
    npm install

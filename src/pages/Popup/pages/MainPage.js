@@ -9,7 +9,7 @@ import SettingIcon from '../../../assets/img/setting-icon.svg';
 
 const MainPage = ({ onPageChange }) => {
   const [news, setNews] = useState([]);
-  const [categories, setCategories] = useState([]);          // 고유 카테고리 목록 + "All"
+  const [categories, setCategories] = useState([]); // 고유 카테고리 목록 + "All"
   const [selectedCategory, setSelectedCategory] = useState('All'); // 현재 선택된 카테고리
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -36,17 +36,18 @@ const MainPage = ({ onPageChange }) => {
           );
           setCategories(['All', 'My Interest', ...uniqueCats]);
 
-
-          const catRes = await axios.get('http://api.cens.kro.kr:8080/api/member/categories', {
-            headers: {
-              'Content-Type': 'application/json',
+          const catRes = await axios.get(
+            'http://api.cens.kro.kr:8080/api/member/categories',
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
             }
-          });
-          console.log('📥 서버에서 받아온 관심 카테고리:', catRes.data);
+          );
+          // console.log('📥 서버에서 받아온 관심 카테고리:', catRes.data);
           const interestCats = Array.isArray(catRes.data) ? catRes.data : [];
           setUserInterestCategories(interestCats);
-          console.log('✅ 관심 카테고리 (검증됨):', interestCats);
-
+          // console.log('✅ 관심 카테고리 (검증됨):', interestCats);
         }
       } catch (e) {
         setLoading(false);
@@ -71,9 +72,8 @@ const MainPage = ({ onPageChange }) => {
     selectedCategory === 'All'
       ? news
       : selectedCategory === 'My Interest'
-        ? news.filter((item) => userInterestCategories.includes(item.category))
-        : news.filter((item) => item.category === selectedCategory);
-
+      ? news.filter((item) => userInterestCategories.includes(item.category))
+      : news.filter((item) => item.category === selectedCategory);
 
   return (
     <div className="page">
@@ -84,17 +84,24 @@ const MainPage = ({ onPageChange }) => {
 
         <div className="header-right-group">
           {/* 검색 아이콘 버튼 */}
-          <button className="search-button"
+          <button
+            className="search-button"
             onClick={() => {
               /* 필요 시 검색 모달/페이지 열기 로직 삽입 */
               console.log('검색 버튼 클릭됨');
             }}
             aria-label="검색"
-          > <img src={SearchIcon} className="search-icon" alt="검색" />
+          >
+            {' '}
+            <img src={SearchIcon} className="search-icon" alt="검색" />
           </button>
 
           {/* 설정(톱니바퀴) 아이콘 */}
-          <button className="settings-button" onClick={() => onPageChange('settings')} aria-label="설정">
+          <button
+            className="settings-button"
+            onClick={() => onPageChange('settings')}
+            aria-label="설정"
+          >
             <img src={SettingIcon} className="search-icon" alt="검색" />
           </button>
         </div>
